@@ -1,14 +1,14 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.member.model.*"%>
-<%-- ¦¹­¶¼È½m²ß±Ä¥Î Script ªº¼gªk¨ú­È --%>
+<%-- æ­¤é æš«ç·´ç¿’æŽ¡ç”¨ Script çš„å¯«æ³•å–å€¼ --%>
 
 <%
-  MemberVo memberVo = (MemberVo) request.getAttribute("memberVo"); //EmpServlet.java(Concroller), ¦s¤JreqªºempVOª«¥ó
+  MemberVo memberVo = (MemberVo) request.getAttribute("memberVo"); //EmpServlet.java(Concroller), å­˜å…¥reqçš„empVOç‰©ä»¶
 %>
 
 <html>
 <head>
-<title>­û¤u¸ê®Æ - listOneEmp.jsp</title>
+<title>å“¡å·¥è³‡æ–™ - listOneEmp.jsp</title>
 
 <style>
   table#table-1 {
@@ -46,30 +46,30 @@
 </head>
 <body bgcolor='white'>
 
-<h4>¦¹­¶¼È½m²ß±Ä¥Î Script ªº¼gªk¨ú­È:</h4>
+<h4>æ­¤é æš«ç·´ç¿’æŽ¡ç”¨ Script çš„å¯«æ³•å–å€¼:</h4>
 <table id="table-1">
 	<tr><td>
-		 <h3>­û¤u¸ê®Æ - ListOneEmp.jsp</h3>
-		 <h4><a href="select_page.jsp"><img src="images/back1.gif" width="100" height="32" border="0">¦^­º­¶</a></h4>
+		 <h3>å“¡å·¥è³‡æ–™ - ListOneEmp.jsp</h3>
+		 <h4><a href="select_page.jsp"><img src="images/back1.gif" width="100" height="32" border="0">å›žé¦–é </a></h4>
 	</td></tr>
 </table>
 
 <table>
 	<tr>
-		<th>·|­û½s¸¹</th>
-		<th>·|­û±b¸¹</th>
-		<th>·|­û±K½X</th>
-		<th>·|­û©m¦W</th>
-		<th>·|­û¼ÊºÙ</th>
-		<th>©Ê§O</th>
-		<th>¹q¸Ü</th>
-		<th>¦a§}</th>
-		<th>¥Í¤é</th>
-		<th>·|­ûÅv­­</th>
-		<th>ÃÀ¤H½s¸¹</th>
-		<th>¥[¤J¤é´Á</th>	
-		<th>­×§ï</th>
-		<th>§R°£</th>
+		<th>æœƒå“¡ç·¨è™Ÿ</th>
+		<th>æœƒå“¡å¸³è™Ÿ</th>
+		<th>æœƒå“¡å¯†ç¢¼</th>
+		<th>æœƒå“¡å§“å</th>
+		<th>æœƒå“¡æš±ç¨±</th>
+		<th>æ€§åˆ¥</th>
+		<th>é›»è©±</th>
+		<th>åœ°å€</th>
+		<th>ç”Ÿæ—¥</th>
+		<th>æœƒå“¡æ¬Šé™</th>
+		<th>è—äººç·¨è™Ÿ</th>
+		<th>åŠ å…¥æ—¥æœŸ</th>	
+		<th>ä¿®æ”¹</th>
+		<th>åˆªé™¤</th>
 	</tr>
 	<tr>
 			<td>${memberVo.memberId}</td>

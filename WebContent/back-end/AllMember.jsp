@@ -1,8 +1,8 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.member.model.*" %>
-<%-- ¦¹­¶½m²ß±Ä¥Î EL ªº¼gªk¨ú­È --%>
+<%-- æ­¤é ç·´ç¿’æŽ¡ç”¨ EL çš„å¯«æ³•å–å€¼ --%>
 
 <%
 	MemberService MemberSvc = new MemberService();
@@ -13,7 +13,7 @@
 
 <html>
 <head>
-<title>©Ò¦³­û¤u¸ê®Æ - listAllMember.jsp</title>
+<title>æ‰€æœ‰å“¡å·¥è³‡æ–™ - listAllMember.jsp</title>
 
 <style>
   table#table-1 {
@@ -51,17 +51,17 @@
 </head>
 <body bgcolor='white'>
 
-<h4>¦¹­¶½m²ß±Ä¥Î EL ªº¼gªk¨ú­È:</h4>
+<h4>æ­¤é ç·´ç¿’æŽ¡ç”¨ EL çš„å¯«æ³•å–å€¼:</h4>
 <table id="table-1">
 	<tr><td>
-		 <h3>©Ò¦³·|­û¸ê®Æ - listAllMember.jsp</h3>
-		 <h4><a href="<%=request.getContextPath()%>"><img src="images/back1.gif" width="100" height="32" border="0">¦^­º­¶</a></h4>
+		 <h3>æ‰€æœ‰æœƒå“¡è³‡æ–™ - listAllMember.jsp</h3>
+		 <h4><a href="<%=request.getContextPath()%>"><img src="images/back1.gif" width="100" height="32" border="0">å›žé¦–é </a></h4>
 	</td></tr>
 </table>
 
-<%-- ¿ù»~ªí¦C --%>
+<%-- éŒ¯èª¤è¡¨åˆ— --%>
 <c:if test="${not empty errorMsgs}">
-	<font style="color:red">½Ð­×¥¿¥H¤U¿ù»~:</font>
+	<font style="color:red">è«‹ä¿®æ­£ä»¥ä¸‹éŒ¯èª¤:</font>
 	<ul>
 		<c:forEach var="message" items="${errorMsgs}">
 			<li style="color:red">${message}</li>
@@ -71,20 +71,20 @@
 
 <table>
 	<tr>
-		<th>·|­û½s¸¹</th>
-		<th>·|­û±b¸¹</th>
-		<th>·|­û±K½X</th>
-		<th>·|­û©m¦W</th>
-		<th>·|­û¼ÊºÙ</th>
-		<th>©Ê§O</th>
-		<th>¹q¸Ü</th>
-		<th>¦a§}</th>
-		<th>¥Í¤é</th>
-		<th>·|­ûÅv­­</th>
-		<th>ÃÀ¤H½s¸¹</th>
-		<th>¥[¤J¤é´Á</th>	
-		<th>­×§ï</th>
-		<th>§R°£</th>
+		<th>æœƒå“¡ç·¨è™Ÿ</th>
+		<th>æœƒå“¡å¸³è™Ÿ</th>
+		<th>æœƒå“¡å¯†ç¢¼</th>
+		<th>æœƒå“¡å§“å</th>
+		<th>æœƒå“¡æš±ç¨±</th>
+		<th>æ€§åˆ¥</th>
+		<th>é›»è©±</th>
+		<th>åœ°å€</th>
+		<th>ç”Ÿæ—¥</th>
+		<th>æœƒå“¡æ¬Šé™</th>
+		<th>è—äººç·¨è™Ÿ</th>
+		<th>åŠ å…¥æ—¥æœŸ</th>	
+		<th>ä¿®æ”¹</th>
+		<th>åˆªé™¤</th>
 	</tr>
 	<%@ include file="page1.file" %> 
 	<c:forEach var="memberVo" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
@@ -104,20 +104,20 @@
 			<td>${memberVo.addTime}</td>
  			<%--<c:forEach var="deptVO" items="${deptSvc.all}"> --%>
 <%--                     <c:if test="${empVO.deptno==deptVO.deptno}"> --%>
-<%-- 	                    ${deptVO.deptno}¡i${deptVO.dname} - ${deptVO.loc}¡j --%>
+<%-- 	                    ${deptVO.deptno}ã€${deptVO.dname} - ${deptVO.loc}ã€‘ --%>
 <%--                     </c:if> --%>
 <%-- 					${deptSvc.getOneDept(empVO.deptno).dname} --%>
 <%--                 </c:forEach> --%>
 			
 			<td>
 			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Login" style="margin-bottom: 0px;">
-			     <input type="submit" value="­×§ï">
+			     <input type="submit" value="ä¿®æ”¹">
 			     <input type="hidden" name="memberId"  value="${memberVo.memberId}">
 			     <input type="hidden" name="action"	value="getone"></FORM>
 			</td>
 			<td>
 			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Login" style="margin-bottom: 0px;">
-			     <input type="submit" value="§R°£">
+			     <input type="submit" value="åˆªé™¤">
 			     <input type="hidden" name="memberId"  value="${memberVo.memberId}">
 			     <input type="hidden" name="action" value="delete"></FORM>
 			</td>

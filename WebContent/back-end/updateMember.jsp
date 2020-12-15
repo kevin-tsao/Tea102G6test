@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="com.member.model.*"%>
 
@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<title>­û¤u¸ê®Æ­×§ï - updateMember.jsp</title>
+<title>å“¡å·¥è³‡æ–™ä¿®æ”¹ - updateMember.jsp</title>
 
 <style>
 table#table-1 {
@@ -52,20 +52,20 @@ th, td {
 	<table id="table-1">
 		<tr>
 			<td>
-				<h3>­û¤u¸ê®Æ­×§ï - updateMember.jsp</h3>
+				<h3>å“¡å·¥è³‡æ–™ä¿®æ”¹ - updateMember.jsp</h3>
 				<h4>
 					<a href="select_page.jsp"><img src="images/back1.gif"
-						width="100" height="32" border="0">¦^­º­¶</a>
+						width="100" height="32" border="0">å›é¦–é </a>
 				</h4>
 			</td>
 		</tr>
 	</table>
 
-	<h3>¸ê®Æ­×§ï:</h3>
+	<h3>è³‡æ–™ä¿®æ”¹:</h3>
 
-	<%-- ¿ù»~ªí¦C --%>
+	<%-- éŒ¯èª¤è¡¨åˆ— --%>
 	<c:if test="${not empty error}">
-		<font style="color: red">½Ğ­×¥¿¥H¤U¿ù»~:</font>
+		<font style="color: red">è«‹ä¿®æ­£ä»¥ä¸‹éŒ¯èª¤:</font>
 		<ul>
 			<c:forEach var="message" items="${error}">
 				<li style="color: red">${message}</li>
@@ -77,57 +77,62 @@ th, td {
 		name="form1">
 		<table>
 			<tr>
-				<th>·|­û±b¸¹</th>
+				<th>æœƒå“¡ç·¨è™Ÿ</th>
+				<td><input type="TEXT" name="memberId" size="45" readonly
+					value="<%=memberVo.getMemberId()%>" /></td>
+			</tr>
+			<tr>
+				<th>æœƒå“¡å¸³è™Ÿ</th>
 				<td><input type="TEXT" name="memberAccount" size="45" readonly
 					value="<%=memberVo.getMemberAccount()%>" /></td>
 			</tr>
 			<tr>
-				<td>·|­û±K½X:</td>
+				<td>æœƒå“¡å¯†ç¢¼:</td>
 				<td><input type="TEXT" name="memberPassword" size="45" readonly
 					value="<%=memberVo.getMemberPassword()%>" /></td>
 			</tr>
 			<tr>
-				<td>·|­û©m¦W:</td>
+				<td>æœƒå“¡å§“å:</td>
 				<td><input type="TEXT" name="memberName" size="45"
 					value="<%=(memberVo == null) ? "" : memberVo.getMemberName()%>" /></td>
 			</tr>
 			<tr>
-				<td>·|­û¼ÊºÙ:</td>
+				<td>æœƒå“¡æš±ç¨±:</td>
 				<td><input type="TEXT" name="memberNickname" size="45"
 					value="<%=(memberVo == null) ? "" : memberVo.getMemberNickname()%>" /></td>
 			</tr>
 			<tr>
-				<td>©Ê§O:</td>
+				<td>æ€§åˆ¥:</td>
 				<td><input type="TEXT" name="memberGender" size="45"
 					value="<%=(memberVo == null) ? "" : memberVo.getMemberGender()%>" /></td>
 			</tr>
 			<tr>
-				<td>¹q¸Ü:</td>
+				<td>é›»è©±:</td>
 				<td><input type="TEXT" name="memberPhone" size="45"
 					value="<%=(memberVo == null) ? "" : memberVo.getMemberPhone()%>" /></td>
 			</tr>
 			<tr>
-				<td>¦a§}:</td>
+				<td>åœ°å€:</td>
 				<td><input type="TEXT" name="memberAddress" size="45"
 					value="<%=(memberVo == null) ? "" : memberVo.getMemberAddress()%>" /></td>
 			</tr>
 
 			<tr>
-				<td>¥Í¤é:</td>
+				<td>ç”Ÿæ—¥:</td>
 				<td><input name="memberBirth" id="f_date1" type="text"></td>
 			</tr>
 			<tr>
-				<td>·|­ûÅv­­:</td>
+				<td>æœƒå“¡æ¬Šé™:</td>
 				<td><input type="TEXT" name="memberMsgAuth" size="45"
 					value="<%=(memberVo == null) ? "" : memberVo.getMemberMsgAuth()%>" /></td>
 			</tr>
 			<tr>
-				<td>ÃÀ¤H½s¸¹:</td>
+				<td>è—äººç·¨è™Ÿ:</td>
 				<td><input type="TEXT" name="bandId" size="45"
 					value="<%=(memberVo == null) ? "" : memberVo.getBandId()%>" /></td>
 			</tr>
 			<tr>
-				<td>¥[¤J¤é´Á:</td>
+				<td>åŠ å…¥æ—¥æœŸ:</td>
 				<td><input type="TEXT" name="sal" size="45"
 					value="<%=(memberVo == null) ? "" : memberVo.getAddTime()%>" /></td>
 			</tr>
@@ -137,15 +142,16 @@ th, td {
 				class="com.member.model.MemberService" />
 
 		</table>
-		<br> <input type="hidden" name="action" value="updateMember"> <input
-			type="hidden" name="memberId" value="<%=memberVo.getMemberId()%>"> <input
-			type="submit" value="°e¥X­×§ï">
+		<br> <input type="hidden" name="action" value="updateMember">
+		<input type="hidden" name="memberId"
+			value="<%=memberVo.getMemberId()%>"> <input type="submit"
+			value="é€å‡ºä¿®æ”¹">
 	</FORM>
 </body>
 
 
 
-<!-- =========================================¥H¤U¬° datetimepicker ¤§¬ÛÃö³]©w========================================== -->
+<!-- =========================================ä»¥ä¸‹ç‚º datetimepicker ä¹‹ç›¸é—œè¨­å®š========================================== -->
 
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/datetimepicker/jquery.datetimepicker.css" />
@@ -168,19 +174,20 @@ th, td {
         $('#f_date1').datetimepicker({
            theme: '',              //theme: 'dark',
  	       timepicker:false,       //timepicker:true,
- 	       step: 1,                //step: 60 (³o¬Otimepickerªº¹w³]¶¡¹j60¤ÀÄÁ)
+ 	       step: 1,                //step: 60 (é€™æ˜¯timepickerçš„é è¨­é–“éš”60åˆ†é˜)
  	       format:'Y-m-d',         //format:'Y-m-d H:i:s',
- 		   value: '<%=memberVo.getMemberBirth()%>', 
- 		   // value:   new Date(),
-	//disabledDates:        ['2017/06/08','2017/06/09','2017/06/10'], // ¥h°£¯S©w¤£§t
-	//startDate:	            '2017/07/10',  // °_©l¤é
-	//minDate:               '-1970-01-01', // ¥h°£¤µ¤é(¤£§t)¤§«e
-	//maxDate:               '+1970-01-01'  // ¥h°£¤µ¤é(¤£§t)¤§«á
+ 		   value: '<%=memberVo.getMemberBirth()%>
+	',
+	// value:   new Date(),
+	//disabledDates:        ['2017/06/08','2017/06/09','2017/06/10'], // å»é™¤ç‰¹å®šä¸å«
+	//startDate:	            '2017/07/10',  // èµ·å§‹æ—¥
+	//minDate:               '-1970-01-01', // å»é™¤ä»Šæ—¥(ä¸å«)ä¹‹å‰
+	//maxDate:               '+1970-01-01'  // å»é™¤ä»Šæ—¥(ä¸å«)ä¹‹å¾Œ
 	});
 
-	// ----------------------------------------------------------¥H¤U¥Î¨Ó±Æ©wµLªk¿ï¾Üªº¤é´Á-----------------------------------------------------------
+	// ----------------------------------------------------------ä»¥ä¸‹ç”¨ä¾†æ’å®šç„¡æ³•é¸æ“‡çš„æ—¥æœŸ-----------------------------------------------------------
 
-	//      1.¥H¤U¬°¬Y¤@¤Ñ¤§«eªº¤é´ÁµLªk¿ï¾Ü
+	//      1.ä»¥ä¸‹ç‚ºæŸä¸€å¤©ä¹‹å‰çš„æ—¥æœŸç„¡æ³•é¸æ“‡
 	//      var somedate1 = new Date('2017-06-15');
 	//      $('#f_date1').datetimepicker({
 	//          beforeShowDay: function(date) {
@@ -193,7 +200,7 @@ th, td {
 	//              return [true, ""];
 	//      }});
 
-	//      2.¥H¤U¬°¬Y¤@¤Ñ¤§«áªº¤é´ÁµLªk¿ï¾Ü
+	//      2.ä»¥ä¸‹ç‚ºæŸä¸€å¤©ä¹‹å¾Œçš„æ—¥æœŸç„¡æ³•é¸æ“‡
 	//      var somedate2 = new Date('2017-06-15');
 	//      $('#f_date1').datetimepicker({
 	//          beforeShowDay: function(date) {
@@ -206,7 +213,7 @@ th, td {
 	//              return [true, ""];
 	//      }});
 
-	//      3.¥H¤U¬°¨â­Ó¤é´Á¤§¥~ªº¤é´ÁµLªk¿ï¾Ü (¤]¥i«ö»İ­n´«¦¨¨ä¥L¤é´Á)
+	//      3.ä»¥ä¸‹ç‚ºå…©å€‹æ—¥æœŸä¹‹å¤–çš„æ—¥æœŸç„¡æ³•é¸æ“‡ (ä¹Ÿå¯æŒ‰éœ€è¦æ›æˆå…¶ä»–æ—¥æœŸ)
 	//      var somedate1 = new Date('2017-06-15');
 	//      var somedate2 = new Date('2017-06-25');
 	//      $('#f_date1').datetimepicker({

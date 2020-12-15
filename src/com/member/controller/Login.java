@@ -26,7 +26,7 @@ public class Login extends HttpServlet {
 	private MemberService memberService;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("UTF-8");
 		String str = request.getParameter("action");
 		if("login".equals(str)) {
 			String memberAccount = request.getParameter("memberAccount");
@@ -232,24 +232,38 @@ public class Login extends HttpServlet {
 		if("updateMember".equals(str)) {
 			Map<String,String> errors = new HashMap<String,String>();
 			request.setAttribute("errors", errors);
+			String memberId = (String)request.getParameter("memberId");
+			String memberAccount =(String)request.getParameter("memberAccount");
+			String memberPassword =(String)request.getParameter("memberPassword");
 			String memberName = (String)request.getParameter("memberName");
 			String memberNickname = (String)request.getParameter("memberNickname");
 			String memberGender = (String)request.getParameter("memberGender");
 			String memberPhone = (String)request.getParameter("memberPhone");
 			String phoneReg = "^0(9)[0-9]{8}$";
-			if(!(memberPhone.matches(phoneReg))&& !(memberPhone.length()==10)) {
-				errors.put("phone", "手機格式有誤");
-			}
+//			if(!(memberPhone.matches(phoneReg))&& !(memberPhone.length()==10)) {
+//				errors.put("phone", "手機格式有誤");
+//			}
 			String memberAddress = (String)request.getParameter("memberAddress");
-		
-			
+			MemberVo memberVo = new MemberVo();
+			memberVo.setMemberId(memberId);
+			memberVo.setMemberAccount(memberAccount);
+			memberVo.setMemberPassword(memberPassword);
+			memberVo.setMemberAddress(memberAddress);
+			memberVo.setMemberName(memberName);
+			memberVo.setMemberNickname(memberNickname);
+			memberVo.setMemberGender(memberGender);
+			memberVo.setMemberPhone(memberPhone);
+			System.out.println(memberAccount);
+			System.out.println(memberPassword);
+			System.out.println(memberAddress);
+			System.out.println(memberName);
+			System.out.println(memberNickname);
+			System.out.println(memberGender);
 			if(errors!=null && !errors.isEmpty()) {
-				request.getRequestDispatcher(
-						"/back-end/updateMember.jsp").forward(request, response);
+			request.setAttribute("memberVo", memberVo);
+			request.getRequestDispatcher("/back-end/updateMember.jsp").forward(request, response);
 				return;
 			}
-			HttpSession session = request.getSession();
-			MemberVo memberVo = (MemberVo)session.getAttribute("memberVo");
 			memberService = new MemberService();
 			memberService.getOneForUpdate(memberName, memberNickname, memberGender, memberPhone, memberAddress, memberVo);
 			String url = "/back-end/AllMember.jsp";

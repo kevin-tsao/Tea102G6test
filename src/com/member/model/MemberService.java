@@ -96,7 +96,7 @@ public class MemberService {
 		memberVo.setMemberNickname(memberNickname);
 		memberVo.setMemberName(memberName);
 		memberVo.setMemberGender(memberGender);
-		memberDao.updateInfo(memberVo);
+		memberDao.uddateInfoBack(memberVo);
 		return memberVo;
 	}
 	
