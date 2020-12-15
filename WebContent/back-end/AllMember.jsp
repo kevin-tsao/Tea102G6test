@@ -110,13 +110,13 @@
 <%--                 </c:forEach> --%>
 			
 			<td>
-			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/com.member.model/Login" style="margin-bottom: 0px;">
+			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Login" style="margin-bottom: 0px;">
 			     <input type="submit" value="­×§ï">
 			     <input type="hidden" name="memberId"  value="${memberVo.memberId}">
 			     <input type="hidden" name="action"	value="updateMember"></FORM>
 			</td>
 			<td>
-			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/com.member.model/Login" style="margin-bottom: 0px;">
+			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Login" style="margin-bottom: 0px;">
 			     <input type="submit" value="§R°£">
 			     <input type="hidden" name="memberId"  value="${memberVo.memberId}">
 			     <input type="hidden" name="action" value="delete"></FORM>

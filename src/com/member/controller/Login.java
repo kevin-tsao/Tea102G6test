@@ -15,8 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-import com.emp.model.EmpService;
-import com.emp.model.EmpVO;
 import com.member.model.MemberService;
 import com.member.model.MemberVo;
 
@@ -226,26 +224,12 @@ public class Login extends HttpServlet {
 			List<String> errorMsgs = new LinkedList<String>();
 			request.setAttribute("errorMsgs", errorMsgs);
 			String memberId = (String) (request.getParameter("memberId"));
-			MemberService MemberSvc = new MemberService();
-			MemberVo memberVo = MemberSvc.getOne(memberId);
-			String memberName = (String)request.getParameter("memberName");
-			String memberNickname = (String)request.getParameter("memberNickname");
-			String memberGender = (String)request.getParameter("memberGender");
-			String memberPhone = (String)request.getParameter("memberPhone");
-			String phoneReg = "^0(9)[0-9]{8}$";
-			if(!(memberPhone.matches(phoneReg))&& !(memberPhone.length()==10)) {
-				
-			}
-			String memberAddress = (String)request.getParameter("memberAddress");
-			String memberCardNumber = (String)request.getParameter("memberCardNumber");
-			Integer memberCardExpyear = Integer.valueOf(request.getParameter("memberCardExpyear"));
-			Integer memberCardExpmonth = Integer.valueOf(request.getParameter("memberCardExpmonth"));
-			HttpSession session = request.getSession();
-			MemberVo memberVo = (MemberVo)session.getAttribute("memberVo");
-			memberService = new MemberService();
-			memberService.updateMemberinfo(memberName, memberNickname, memberGender, memberPhone, memberAddress, memberCardNumber, memberCardExpyear, memberCardExpmonth, memberVo);
-			
-           
+			MemberService memberSvc = new MemberService();
+			MemberVo memberVo = memberSvc.getOne(memberId);
+			request.setAttribute("memberVo", memberVo);
+			String url = "/back-end/updateMember.jsp";
+			RequestDispatcher successView = request.getRequestDispatcher(url);
+			successView.forward(request, response);
 			
 		}
 }
