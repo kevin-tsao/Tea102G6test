@@ -241,6 +241,8 @@ public class Login extends HttpServlet {
 				errors.put("phone", "手機格式有誤");
 			}
 			String memberAddress = (String)request.getParameter("memberAddress");
+		
+			
 			if(errors!=null && !errors.isEmpty()) {
 				request.getRequestDispatcher(
 						"/back-end/updateMember.jsp").forward(request, response);

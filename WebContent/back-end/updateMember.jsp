@@ -3,7 +3,7 @@
 <%@ page import="com.member.model.*"%>
 
 <%
-	MemberVo memberVo = (MemberVo) request.getAttribute("memberVo"); //EmpServlet.java (Concroller) 存入req的empVO物件 (包括幫忙取出的empVO, 也包括輸入資料錯誤時的empVO物件)
+	MemberVo memberVo = (MemberVo) request.getAttribute("memberVo");
 %>
 <html>
 <head>
@@ -64,10 +64,10 @@ th, td {
 	<h3>資料修改:</h3>
 
 	<%-- 錯誤表列 --%>
-	<c:if test="${not empty errorMsgs}">
+	<c:if test="${not empty error}">
 		<font style="color: red">請修正以下錯誤:</font>
 		<ul>
-			<c:forEach var="message" items="${errorMsgs}">
+			<c:forEach var="message" items="${error}">
 				<li style="color: red">${message}</li>
 			</c:forEach>
 		</ul>
@@ -77,19 +77,14 @@ th, td {
 		name="form1">
 		<table>
 			<tr>
-				<th>會員編號</th>
-				<td><input type="TEXT" name="memberId" size="45"
-					value="<%=(memberVo == null) ? "" : memberVo.getMemberId()%>" /></td>
-			</tr>
-			<tr>
 				<th>會員帳號</th>
-				<td><input type="TEXT" name="memberAccount" size="45"
-					value="<%=(memberVo == null) ? "" : memberVo.getMemberAccount()%>" /></td>
+				<td><input type="TEXT" name="memberAccount" size="45" readonly
+					value="<%=memberVo.getMemberAccount()%>" /></td>
 			</tr>
 			<tr>
 				<td>會員密碼:</td>
-				<td><input type="TEXT" name="memberPassword" size="45"
-					value="<%=(memberVo == null) ? "" : memberVo.getMemberPassword()%>" /></td>
+				<td><input type="TEXT" name="memberPassword" size="45" readonly
+					value="<%=memberVo.getMemberPassword()%>" /></td>
 			</tr>
 			<tr>
 				<td>會員姓名:</td>
@@ -175,8 +170,8 @@ th, td {
  	       timepicker:false,       //timepicker:true,
  	       step: 1,                //step: 60 (這是timepicker的預設間隔60分鐘)
  	       format:'Y-m-d',         //format:'Y-m-d H:i:s',
- 		   value: '<%=memberVo.getMemberBirth()%>
-	', // value:   new Date(),
+ 		   value: '<%=memberVo.getMemberBirth()%>', 
+ 		   // value:   new Date(),
 	//disabledDates:        ['2017/06/08','2017/06/09','2017/06/10'], // 去除特定不含
 	//startDate:	            '2017/07/10',  // 起始日
 	//minDate:               '-1970-01-01', // 去除今日(不含)之前
