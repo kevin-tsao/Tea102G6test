@@ -21,6 +21,7 @@ public class MemberDaoJDBC implements MemberDao_interface{
 	private static final String UPDATE_MEMBER_PHOTO="update member set member_photo=? where member_id=?";
 	private static final String FIND_BY_Account="select * from member where member_Account = ?";
 	private static final String UPDATE_MEMBER_INFO="update member set member_Gender=?,member_phone=?,member_address=?,member_Name=?,member_nickname=?,Member_Card_Number=?,member_Card_Expyear=?,member_Card_Expmonth=? where member_id = ?";
+	private static final String UPDATE_MEMBER_INFO_BACK="update member set member_Name=?, member_Nickname=?, member_Gender=?, member_Phone=?, member_Address=?  where member_id = ?";
 	@Override
 	public void insert(MemberVo memberVo) {
 		// TODO Auto-generated method stub
@@ -456,4 +457,46 @@ public class MemberDaoJDBC implements MemberDao_interface{
 		}
 		
 	}
+
+	@Override
+	public void uddateInfoBack(MemberVo memberVo) {
+		Connection con = null;
+		PreparedStatement psmt = null;
+		try {
+			Class.forName(driver);
+			con = DriverManager.getConnection(url,userid,passwd);
+			psmt = con.prepareStatement(UPDATE_MEMBER_INFO_BACK);
+			psmt.setString(4, memberVo.getMemberPhone());
+			psmt.setString(5,memberVo.getMemberAddress());
+			psmt.setString(2,memberVo.getMemberNickname());
+			psmt.setString(1,memberVo.getMemberName());
+			psmt.setString(3,memberVo.getMemberGender());
+			psmt.setString(6, memberVo.getMemberId());
+			psmt.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if (psmt != null) {
+				try {
+					psmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		
 	}
+		
+	}
+

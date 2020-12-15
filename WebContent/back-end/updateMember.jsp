@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<title>員工資料修改 - update_emp_input.jsp</title>
+<title>員工資料修改 - updateMember.jsp</title>
 
 <style>
 table#table-1 {
@@ -53,7 +53,7 @@ th, td {
 	<table id="table-1">
 		<tr>
 			<td>
-				<h3>員工資料修改 - update_emp_input.jsp</h3>
+				<h3>員工資料修改 - updateMember.jsp</h3>
 				<h4>
 					<a href="select_page.jsp"><img src="images/back1.gif"
 						width="100" height="32" border="0">回首頁</a>
@@ -79,42 +79,42 @@ th, td {
 		<table>
 			<tr>
 				<th>會員編號</th>
-				<td><input type="TEXT" name="MemberId" size="45"
+				<td><input type="TEXT" name="memberId" size="45"
 					value="<%=(memberVo == null) ? "" : memberVo.getMemberId()%>" /></td>
 			</tr>
 			<tr>
 				<th>會員帳號</th>
-				<td><input type="TEXT" name="MemberAccount" size="45"
+				<td><input type="TEXT" name="memberAccount" size="45"
 					value="<%=(memberVo == null) ? "" : memberVo.getMemberAccount()%>" /></td>
 			</tr>
 			<tr>
 				<td>會員密碼:</td>
-				<td><input type="TEXT" name="MemberPassword" size="45"
+				<td><input type="TEXT" name="memberPassword" size="45"
 					value="<%=(memberVo == null) ? "" : memberVo.getMemberPassword()%>" /></td>
 			</tr>
 			<tr>
 				<td>會員姓名:</td>
-				<td><input type="TEXT" name="MemberName" size="45"
+				<td><input type="TEXT" name="memberName" size="45"
 					value="<%=(memberVo == null) ? "" : memberVo.getMemberName()%>" /></td>
 			</tr>
 			<tr>
 				<td>會員暱稱:</td>
-				<td><input type="TEXT" name="MemberNickname" size="45"
+				<td><input type="TEXT" name="memberNickname" size="45"
 					value="<%=(memberVo == null) ? "" : memberVo.getMemberNickname()%>" /></td>
 			</tr>
 			<tr>
 				<td>性別:</td>
-				<td><input type="TEXT" name="MemberGender" size="45"
+				<td><input type="TEXT" name="memberGender" size="45"
 					value="<%=(memberVo == null) ? "" : memberVo.getMemberGender()%>" /></td>
 			</tr>
 			<tr>
 				<td>電話:</td>
-				<td><input type="TEXT" name="MemberPhone" size="45"
+				<td><input type="TEXT" name="memberPhone" size="45"
 					value="<%=(memberVo == null) ? "" : memberVo.getMemberPhone()%>" /></td>
 			</tr>
 			<tr>
 				<td>地址:</td>
-				<td><input type="TEXT" name="MemberAddress" size="45"
+				<td><input type="TEXT" name="memberAddress" size="45"
 					value="<%=(memberVo == null) ? "" : memberVo.getMemberAddress()%>" /></td>
 			</tr>
 
@@ -124,12 +124,12 @@ th, td {
 			</tr>
 			<tr>
 				<td>會員權限:</td>
-				<td><input type="TEXT" name="MemberMsgAuth" size="45"
+				<td><input type="TEXT" name="memberMsgAuth" size="45"
 					value="<%=(memberVo == null) ? "" : memberVo.getMemberMsgAuth()%>" /></td>
 			</tr>
 			<tr>
 				<td>藝人編號:</td>
-				<td><input type="TEXT" name="BandId" size="45"
+				<td><input type="TEXT" name="bandId" size="45"
 					value="<%=(memberVo == null) ? "" : memberVo.getBandId()%>" /></td>
 			</tr>
 			<tr>
@@ -143,8 +143,8 @@ th, td {
 				class="com.member.model.MemberService" />
 
 		</table>
-		<br> <input type="hidden" name="action" value="update"> <input
-			type="hidden" name="empno" value="<%=memberVo.getMemberId()%>"> <input
+		<br> <input type="hidden" name="action" value="updateMember"> <input
+			type="hidden" name="memberId" value="<%=memberVo.getMemberId()%>"> <input
 			type="submit" value="送出修改">
 	</FORM>
 </body>

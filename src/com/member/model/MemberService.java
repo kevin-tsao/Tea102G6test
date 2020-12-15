@@ -89,5 +89,15 @@ public class MemberService {
 		return memberVo;
 		
 	}
+	public MemberVo getOneForUpdate(String memberName,String memberNickname,String memberGender,String memberPhone,String memberAddress,MemberVo memberVo) {
+		memberVo.setMemberId(memberVo.getMemberId());
+		memberVo.setMemberPhone(memberPhone);
+		memberVo.setMemberAddress(memberAddress);
+		memberVo.setMemberNickname(memberNickname);
+		memberVo.setMemberName(memberName);
+		memberVo.setMemberGender(memberGender);
+		memberDao.updateInfo(memberVo);
+		return memberVo;
+	}
 	
 }

@@ -14,5 +14,6 @@ public interface MemberDao_interface {
     public MemberVo findByAccount(String memberAccount);
     public void updatePic(MemberVo memberVo,byte[] pic);
     public void updateInfo(MemberVo memberVo);
+    public void uddateInfoBack(MemberVo memberVo);
 
 }

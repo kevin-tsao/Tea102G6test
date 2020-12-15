@@ -220,17 +220,39 @@ public class Login extends HttpServlet {
 			RequestDispatcher successView = request.getRequestDispatcher("/back-end/AllMember.jsp"); // 新增成功後轉交listAllEmp.jsp
 			successView.forward(request, response);
 	}
-		if("updateMember".equals(str)) {
-			List<String> errorMsgs = new LinkedList<String>();
-			request.setAttribute("errorMsgs", errorMsgs);
+		if("getone".equals(str)) {
 			String memberId = (String) (request.getParameter("memberId"));
 			MemberService memberSvc = new MemberService();
 			MemberVo memberVo = memberSvc.getOne(memberId);
 			request.setAttribute("memberVo", memberVo);
 			String url = "/back-end/updateMember.jsp";
 			RequestDispatcher successView = request.getRequestDispatcher(url);
-			successView.forward(request, response);
-			
+			successView.forward(request, response);		
+		}
+		if("updateMember".equals(str)) {
+			Map<String,String> errors = new HashMap<String,String>();
+			request.setAttribute("errors", errors);
+			String memberName = (String)request.getParameter("memberName");
+			String memberNickname = (String)request.getParameter("memberNickname");
+			String memberGender = (String)request.getParameter("memberGender");
+			String memberPhone = (String)request.getParameter("memberPhone");
+			String phoneReg = "^0(9)[0-9]{8}$";
+			if(!(memberPhone.matches(phoneReg))&& !(memberPhone.length()==10)) {
+				errors.put("phone", "手機格式有誤");
+			}
+			String memberAddress = (String)request.getParameter("memberAddress");
+			if(errors!=null && !errors.isEmpty()) {
+				request.getRequestDispatcher(
+						"/back-end/addMember.jsp").forward(request, response);
+				return;
+			}
+			HttpSession session = request.getSession();
+			MemberVo memberVo = (MemberVo)session.getAttribute("memberVo");
+			memberService = new MemberService();
+			memberService.getOneForUpdate(memberName, memberNickname, memberGender, memberPhone, memberAddress, memberVo);
+			String url = "/back-end/AllMember.jsp";
+			RequestDispatcher successView = request.getRequestDispatcher(url);
+			successView.forward(request, response);		
 		}
 }
 	

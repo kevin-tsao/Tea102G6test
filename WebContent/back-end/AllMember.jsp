@@ -113,7 +113,7 @@
 			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Login" style="margin-bottom: 0px;">
 			     <input type="submit" value="н╫зя">
 			     <input type="hidden" name="memberId"  value="${memberVo.memberId}">
-			     <input type="hidden" name="action"	value="updateMember"></FORM>
+			     <input type="hidden" name="action"	value="getone"></FORM>
 			</td>
 			<td>
 			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Login" style="margin-bottom: 0px;">
