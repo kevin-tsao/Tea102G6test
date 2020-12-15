@@ -5,7 +5,6 @@
 <%
 	MemberVo memberVo = (MemberVo) request.getAttribute("memberVo"); //EmpServlet.java (Concroller) 存入req的empVO物件 (包括幫忙取出的empVO, 也包括輸入資料錯誤時的empVO物件)
 %>
-<%=memberVo == null%>
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />

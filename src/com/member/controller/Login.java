@@ -243,7 +243,7 @@ public class Login extends HttpServlet {
 			String memberAddress = (String)request.getParameter("memberAddress");
 			if(errors!=null && !errors.isEmpty()) {
 				request.getRequestDispatcher(
-						"/back-end/addMember.jsp").forward(request, response);
+						"/back-end/updateMember.jsp").forward(request, response);
 				return;
 			}
 			HttpSession session = request.getSession();
